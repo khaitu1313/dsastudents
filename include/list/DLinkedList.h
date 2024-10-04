@@ -383,7 +383,7 @@ typename DLinkedList<T>::Node *DLinkedList<T>::getPreviousNodeOf(int index)
     else{
         p = this->tail->prev;
         i = count - 1;
-        while(i > index){
+        while(i >= index){
             p = p->prev;
             --i;
         }
@@ -551,6 +551,10 @@ void DLinkedList<T>::copyFrom(const DLinkedList<T> &list)
      * Iterates through the source list and adds each element, preserving the order of the nodes.
      */
     // TODO
+    if(!empty()){
+        removeInternalData();
+    }
+    
     Node *cur = list.head->next;
     while (cur != list.tail)
     {
